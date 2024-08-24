@@ -1,0 +1,44 @@
+<div class="container">
+  <p-card header="PrimeNG Demo" subheader="Showcasing various PrimeNG components">
+    <div class="p-fluid grid">
+      <div class="col-12 md:col-6 lg:col-4">
+        <h3>Input and Button</h3>
+        <div class="p-inputgroup">
+          <input type="text" pInputText placeholder="Enter text" [(ngModel)]="inputText">
+          <button type="button" pButton label="Submit" (click)="onSubmit()"></button>
+        </div>
+        <p *ngIf="submittedText">You entered: {{ submittedText }}</p>
+      </div>
+
+      <div class="col-12 md:col-6 lg:col-4">
+        <h3>Calendar</h3>
+        <p-calendar [(ngModel)]="date" [showIcon]="true"></p-calendar>
+      </div>
+
+      <div class="col-12 md:col-6 lg:col-4">
+        <h3>Dropdown</h3>
+        <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" placeholder="Select a category"></p-dropdown>
+      </div>
+
+      <div class="col-12">
+        <h3>Table</h3>
+        <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+            <tr>
+              <td>{{ product.name }}</td>
+              <td>{{ product.category }}</td>
+              <td>{{ product.price | currency:'USD' }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>
